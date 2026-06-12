@@ -10,9 +10,9 @@ limit 10;
 
 --highest revenue
 select region,sum(quantity*unit_price) as revenue
-from orders GROUP BY region
-ORDER BY revenue DESC
-LIMIT 1;
+from orders group by region
+order by  revenue desc
+limit 1;
 
 --average delivery time
 select avg(delivery_time_days) from shipments;
@@ -21,15 +21,15 @@ select avg(delivery_time_days) from shipments;
 -- Use Case 4
 -- Supplier Performance Ranking
 
-select supplier_name,count(*) AS total_orders,avg(delivery_date - order_date) as avg_delivery_days
+select supplier_name,count(*) as total_orders,avg(delivery_date-order_date) as avg_delivery_days
 from orders
 group by supplier_name
 order by avg_delivery_days;
 
 -- Use Case 5
 -- Monthly Sales Trend
-select DATE_TRUNC('month',order_date) AS month, sum(quantity*unit_price) AS sales
+select DATE_TRUNC('month',order_date) as month, sum(quantity*unit_price) as sales
 FROM orders
-GROUP BY month
-ORDER BY month;
+group by month
+order by  month;
 

@@ -39,21 +39,21 @@ $$;
 -- Function 3
 -- Calculate Inventory Turnover
 
-CREATE FUNCTION calculate_inventory_turnover(
-    p_cogs NUMERIC,
-    p_avg_inventory NUMERIC
+create function calculate_inventory_turnover(
+    p_cogs numeric,
+    p_avg_inventory numeric
 )
-RETURNS NUMERIC
-LANGUAGE plpgsql
-AS $$
-BEGIN
-    IF p_avg_inventory = 0 THEN
-        RETURN 0;
-    END IF;
+returns numeric
+language plpgsql
+as $$
+begin
+    if p_avg_inventory = 0 then
+        return 0;
+    end if;
 
-    RETURN ROUND(
-        p_cogs / p_avg_inventory,
+    return ROUND(
+        p_cogs/p_avg_inventory,
         2
     );
-END;
+end;
 $$;
